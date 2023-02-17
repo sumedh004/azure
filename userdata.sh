@@ -23,7 +23,7 @@ sudo apt-get install azure-cli -y
 
 sudo mkdir -p /etc/apt/keyrings
 
-#installing terraform
+
 
 wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
 
