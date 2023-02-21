@@ -1,4 +1,4 @@
-resource-group-name = "1-f8975154-playground-sandbox"
+resource-group-name = "1-489be203-playground-sandbox"
 aks-name            = "myaks"
 node-name           = "mynode"
 node-count          = 2
