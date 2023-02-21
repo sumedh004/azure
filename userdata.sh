@@ -2,7 +2,7 @@
 
 #installing azure cli
 
-sudo apt remove azure-cli -y && sudo apt autoremove -y. 
+sudo apt remove azure-cli -y && sudo apt autoremove -y
 sudo apt-get update
 sudo apt-get install ca-certificates curl apt-transport-https lsb-release gnupg -y
 
@@ -62,3 +62,34 @@ echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
 
 sudo apt-get update
 sudo apt-get install jenkins -y
+sleep 10
+sudo systemctl enable jenkins
+
+
+sudo apt-get remove docker docker-engine docker.io containerd runc
+
+sudo apt-get update
+sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+    
+sudo mkdir -m 0755 -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo usermod -aG docker cloud_user
+
+export JFROG_HOME=/opt/jfrog
+mkdir -p $JFROG_HOME/artifactory/var/etc/
+cd $JFROG_HOME/artifactory/var/etc/
+touch ./system.yaml
+chown -R 1030:1030 $JFROG_HOME/artifactory/var
+
+ 
