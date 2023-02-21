@@ -64,7 +64,7 @@ sudo apt-get update
 sudo apt-get install jenkins -y
 sleep 10
 sudo systemctl enable jenkins
-
+sudo apt install sshpass -y
 
 sudo apt-get remove docker docker-engine docker.io containerd runc
 
