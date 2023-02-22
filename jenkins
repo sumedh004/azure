@@ -20,6 +20,8 @@ pipeline{
     stages {
         stage("init"){
             steps{
+	        withCredentials([usernamePassword(credentialsId: 'az_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
+		sh 'az login -u $USERNAME -p $USERPASS'
                 sh 'terraform init'
 
             }
