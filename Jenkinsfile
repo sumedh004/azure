@@ -31,11 +31,11 @@ pipeline{
 
         stage("plan"){
             when { anyOf
-					{
-						environment name: 'ACTION', value: 'plan';
-						environment name: 'ACTION', value: 'apply'
-					}
+				{
+					environment name: 'ACTION', value: 'plan';
+					environment name: 'ACTION', value: 'apply'
 				}
+			}
             steps{
                 sh 'terraform plan -out=tfplan'
 
@@ -45,10 +45,10 @@ pipeline{
 
         stage("apply"){
             when { anyOf
-					{
-						environment name: 'ACTION', value: 'apply'
-					}
+				{
+					environment name: 'ACTION', value: 'apply'
 				}
+			}
             steps{
                 sh 'terraform apply tfplan'
 
@@ -57,10 +57,10 @@ pipeline{
 
         stage("destroy"){
             when { anyOf
-					{
-						environment name: 'ACTION', value: 'destroy'
-					}
+				{
+					environment name: 'ACTION', value: 'destroy'
 				}
+			}
             steps{
                 sh 'terraform destroy --auto-approve'
 
