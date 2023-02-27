@@ -23,6 +23,6 @@ resource "azurerm_kubernetes_cluster" "myaks" {
 
 resource "local_file" "kubeconfig" {
   depends_on = [azurerm_kubernetes_cluster.myaks]
-  filename   = "~/.kube/config"
+  filename   = "/home/azureuser/.kube/config"
   content    = azurerm_kubernetes_cluster.myaks.kube_config_raw
 }
