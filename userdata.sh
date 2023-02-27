@@ -43,6 +43,7 @@ echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://a
 
 sudo apt-get update
 sudo apt-get install -y kubectl
+#1.24.9
 
 
 #installing java
